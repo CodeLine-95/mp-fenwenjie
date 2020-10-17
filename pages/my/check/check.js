@@ -23,6 +23,7 @@ Page({
     passPracticeList:[],//已审核实践审核数组
 	
 	userInfo: null,
+	id: null,
   },
 
   //选择待审核界面
@@ -37,6 +38,25 @@ Page({
         //待审核---用户审核
         //待审核数据请求（未写）
       })
+	  //待审核用户
+	  var waitData = {
+	  	userId: this.data.id,
+	  	status: 2,
+	  	pageSize: 10
+	  }
+	  $.post("/api/user/userAuditList",waitData).then(res=>{
+	  	console.log("waitData",res.data)
+	  	// res.data = {"code":200,"msg":"success","errMsg":"","sysTime":10999999233,"data":[{"userId":1,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","userIdentity":2,"realName":"王大锤","organizeName":"百度网讯","gmtUpdate":10999999233,"userStatus":2},{"userId":2,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","userIdentity":1,"realName":"小明","organizeName":"中国农业大学 计算机学院","gmtUpdate":10999999234,"userStatus":2}]}
+	  	if(res.data.code==200){
+	  		this.setData({
+	  		  waitUserList:res.data.data
+	  		})
+	  	}else{
+	  		console.log("数据加载失败....");
+	  	}
+	  }).catch(res=>{
+	  	console.log("error",res);
+	  })
       console.log("待审核---用户审核界面")
     }
   },
@@ -51,6 +71,22 @@ Page({
         practiceCheckFlag:0,
         //已审核数据请求（未写）
       })
+	  var passUserData = {
+	  	userId: this.data.id,
+	  	status: 1,
+	  	pageSize: 10
+	  }
+	  $.post("/api/user/userAuditList",passUserData).then(res=>{
+	  	console.log('passUserList',res.data)
+	  	// res.data = {"code":200,"msg":"success","errMsg":"","sysTime":10999999233,"data":[{"userId":1,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","userIdentity":2,"realName":"王智慧","organizeName":"百度网讯","gmtUpdate":10999999233,"userStatus":1},{"userId":2,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","userIdentity":1,"realName":"小王","organizeName":"华中农业大学 工学院","gmtUpdate":10999999234,"userStatus":0}]}
+	  	if(res.data.code==200){
+	  		this.setData({
+	  		  passUserList:res.data.data
+	  		})
+	  	}
+	  }).catch(res=>{
+	  	console.log("error",res);
+	  })
       console.log("已审核---用户审核界面")
     }
   },
@@ -63,12 +99,46 @@ Page({
           practiceCheckFlag:0,
         })
         console.log("待审核---用户审核界面")
+		var waitData = {
+			userId: this.data.id,
+			status: 2,
+			pageSize: 10
+		}
+		$.post("/api/user/userAuditList",waitData).then(res=>{
+			console.log("waitData",res.data)
+			// res.data = {"code":200,"msg":"success","errMsg":"","sysTime":10999999233,"data":[{"userId":1,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","userIdentity":2,"realName":"王大锤","organizeName":"百度网讯","gmtUpdate":10999999233,"userStatus":2},{"userId":2,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","userIdentity":1,"realName":"小明","organizeName":"中国农业大学 计算机学院","gmtUpdate":10999999234,"userStatus":2}]}
+			if(res.data.code==200){
+				this.setData({
+				  waitUserList:res.data.data
+				})
+			}else{
+				console.log("数据加载失败....");
+			}
+		}).catch(res=>{
+			console.log("error",res);
+		})
       }else{
         this.setData({
           userCheckFlag:1,
           practiceCheckFlag:0,
         })
         console.log("已审核---用户审核界面")
+		var passUserData = {
+			userId: this.data.id,
+			status: 1,
+			pageSize: 10
+		}
+		$.post("/api/user/userAuditList",passUserData).then(res=>{
+			console.log('passUserList',res.data)
+			// res.data = {"code":200,"msg":"success","errMsg":"","sysTime":10999999233,"data":[{"userId":1,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","userIdentity":2,"realName":"王智慧","organizeName":"百度网讯","gmtUpdate":10999999233,"userStatus":1},{"userId":2,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","userIdentity":1,"realName":"小王","organizeName":"华中农业大学 工学院","gmtUpdate":10999999234,"userStatus":0}]}
+			if(res.data.code==200){
+				this.setData({
+				  passUserList:res.data.data
+				})
+			}
+		}).catch(res=>{
+			console.log("error",res);
+		})
       }
     }
   },
@@ -81,12 +151,46 @@ Page({
           practiceCheckFlag:1,
         })
         console.log("待审核---实践审核界面")
+		//待审核实践
+		var waitPracticeData = {
+			userId: this.data.id,
+			status: 2,
+			pageSize: 10
+		}
+		$.post("/api/user/practiceAuditList",waitPracticeData).then(res=>{
+		  console.log("waitPracticeList",res.data)
+		  // res.data = {"code":200,"msg":"success","errMsg":"","sysTime":10999999233,"data":[{"postId":1,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","postType":1,"title":"李二狗","gmtUpdate":10999999233,"gmtUpdateFormat":"2019-10-11 12:23:45","schoolName":"中国农业大学","majorName":"计算机学院","jobTitle":"java开发","cityName":"北京","postStatus":2},{"postId":1,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","postType":2,"title":"毕业实习","gmtUpdate":10999999233,"gmtUpdateFormat":"2019-10-11 12:23:45","schoolName":"中国农业大学","majorName":"计算机学院","jobTitle":"产品经理","cityName":"北京","postStatus":2}]}
+		  if(res.data.code==200){
+		    this.setData({
+		      waitPracticeList:res.data.data
+		    })
+		  }
+		}).catch(res=>{
+		     console.log("error",res);
+		})
       }else{
         this.setData({
           userCheckFlag:0,
           practiceCheckFlag:1,
         })
         console.log("已审核---实践审核界面")
+		//已审核实践
+		var passPracticeData = {
+			userId: this.data.id,
+			status: 1,
+			pageSize: 10
+		}
+		$.post("/api/user/practiceAuditList",passPracticeData).then(res=>{
+		  console.log("passPracticeList",res.data)
+		  // res.data = {"code":200,"msg":"success","errMsg":"","sysTime":10999999233,"data":[{"postId":1,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","postType":1,"title":"李二狗","gmtUpdate":10999999233,"gmtUpdateFormat":"2019-10-11 12:23:45","schoolName":"中国农业大学","majorName":"计算机学院","jobTitle":"java开发","cityName":"北京","postStatus":1},{"postId":2,"wxIcon":"https://inews.gtimg.com/newsapp_bt/0/9924121813/1000","wxId":"xiaohong","postType":2,"title":"毕业实习","gmtUpdate":10999999233,"gmtUpdateFormat":"2019-10-11 12:23:45","schoolName":"中国农业大学","majorName":"计算机学院","jobTitle":"产品经理","cityName":"北京","postStatus":0}]}
+		  if(res.data.code==200){
+		    this.setData({
+		      passPracticeList:res.data.data
+		    })
+		  }
+		}).catch(res=>{
+		     console.log("error",res);
+		})
       }
     }
   },
@@ -106,6 +210,7 @@ Page({
 	var userInfo = wx.getStorageSync('userInfo');
 	that.setData({
 	  userInfo: userInfo,
+	  id: options.id
 	})
 	  
 	//待审核用户

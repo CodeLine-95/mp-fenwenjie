@@ -23,8 +23,8 @@
     </view>
 
     <view class="bottom">
-        <button bindtap="userAudit" data-status="1" data-userId="{{userInfo.id}}">通过</button>
-        <button bindtap="userAudit" data-status="0" data-userId="{{userInfo.id}}">拒绝</button>
+        <button bindtap="userAudit" data-status="1" data-userId="{{detail.userId}}">通过</button>
+        <button bindtap="userAudit" data-status="0" data-userId="{{detail.userId}}">拒绝</button>
     </view>
 </view>
 

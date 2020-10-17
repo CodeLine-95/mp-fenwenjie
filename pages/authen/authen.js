@@ -29,10 +29,10 @@ Page({
       if (e.detail.userInfo) {
           //用户按了允许授权按钮，获取openid
           var that = this;
-		  var appId = 'wxbc3feeb2e4b31e69';
-		  var AppSecret = '759c59192a6b18d247923e2fb1936c0f';
-		  // var appId = 'wx6da3c72afe9a3244';
-		  // var AppSecret = '9b9e81afc2b516855e0b50e5f7073f3c';
+		  // var appId = 'wxbc3feeb2e4b31e69';
+		  // var AppSecret = '759c59192a6b18d247923e2fb1936c0f';
+		  var appId = 'wx6da3c72afe9a3244';
+		  var AppSecret = '9b9e81afc2b516855e0b50e5f7073f3c';
 		  wx.login({
 		    success (res) {
 		      if (res.code) {
