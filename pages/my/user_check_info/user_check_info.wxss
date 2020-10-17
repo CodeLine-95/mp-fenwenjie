@@ -1,0 +1,79 @@
+
+.container{
+  padding: 40rpx;
+}
+.person{
+  display: flex;
+}
+.personLeft{
+  width: 70%;
+  padding: 10rpx;
+}
+.personRight{
+  width: 30%;
+}
+.personRight image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.personLeft :last-child{
+  margin-top: 50rpx;
+}
+.content{
+  padding: 10rpx;
+}
+.expectItem{
+  margin-bottom: 20rpx;
+}
+.expectItem text{
+  font-weight: bold;
+  margin-right: 15rpx;
+}
+.expectPosition{
+  margin-bottom: 20rpx;
+}
+.expectPosition text{
+  font-weight: bold;
+  margin-right: 15rpx;
+}
+.personInfoTitle{
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.personInfo{
+  white-space: pre-wrap;
+}
+.reportCardTitle{
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.reportCard{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.contact{
+  display: flex;
+  justify-content: space-between;
+  line-height: 25rpx;
+  margin-bottom: 30rpx;
+}
+.contact view:first-child{
+  font-weight: bold;
+}
+.bottom{
+  display: flex;
+}
+.bottom button{
+  width: 45%;
+  color: white;
+}
+.bottom button:first-child{
+  background-color: green;
+}
+.bottom button:last-child{
+  background-color: red;
+}
+
+

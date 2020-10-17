@@ -1,0 +1,132 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">发布实践要求</view>
+</cu-custom>
+<view class="cu-form-group margin-top">
+	<view class="title">方式：
+	<view class="cu-tag bg-{{color}}">{{method}}</view>
+	</view>
+	<switch bindchange="methodChange"></switch>
+</view>
+<!-- <view wx:if="{{method=='线下'}}" class="cu-form-group">
+	<view class="title">地点</view>
+	<picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+		<view class="picker">
+			{{region[0]}}，{{region[1]}}，{{region[2]}}
+		</view>
+	</picker>
+</view> -->
+<view class="cu-form-group margin-top">
+	<view class="title">学校名称</view>
+	<picker bindchange="schoolChange" value="{{schoolIndex}}" range="{{schoolPicker}}" range-key="{{'name'}}">
+		<view class="picker">
+			{{schoolPicker[schoolIndex].name}}
+		</view>
+	</picker>
+</view>
+  	<view class="cu-form-group">
+		<view class="title">期望岗位</view>
+		<input model:value="{{jobName}}" placeholder="职位名称"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">期望地点</view>
+		<view >
+        	<view bindtap="selectCity" class="text-{{city.cityCode==null?'blue':'red'}}">{{city.cityName}}</view>
+    	</view>
+		<!-- <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+			<view class="picker">
+				{{region[0]}}，{{region[1]}}，{{region[2]}}
+			</view>
+		</picker> -->
+	</view>
+	<view class="cu-form-group margin-top">
+	<view class="title">学习阶段</view>
+	<!-- <picker bindchange="studyChange" value="{{studyIndex}}" range="{{studyPicker}}">
+		<view class="picker">
+			{{studyPicker[studyIndex]}}
+		</view>
+	</picker> -->
+	<picker bindchange="learningStagesChange" value="{{learningStagesIndex}}" range="{{learningStagesPicker}}" range-key="{{'name'}}">
+		<view class="picker">
+			{{learningStagesPicker[learningStagesIndex].name}}
+		</view>
+	</picker>
+
+	</view>
+
+	<view wx:if="{{method=='高校'}}" class="cu-form-group">
+		<view class="title">实践课程名称</view>
+		<input model:value="{{courseName}}" placeholder="课程名称"></input>
+	</view>
+	<view wx:if="{{method=='高校'}}" class="cu-form-group">
+		<view class="title">课程描述</view>
+		<text bindtap="write" class="text-{{article==null?'green':'red'}} margin-right write padding-right-xs text-right flex-sub padding-tb">{{article==null?"填写":"修改"}}</text>
+		<!-- <textarea maxlength="-1" value="{{jobDescription}}" placeholder="职位描述"></textarea> -->
+	</view>
+
+	<view wx:if="{{method=='个人'}}" class="cu-form-group">
+		<view class="title">个人描述</view>
+		<!-- <input value="{{jobName}}" placeholder="个人描述"></input> -->
+		<text bindtap="write" class="text-{{article==null?'green':'red'}} margin-right write padding-right-xs text-right flex-sub padding-tb">{{article==null?"填写":"修改"}}</text>
+
+	</view>
+	<view wx:if="{{method=='个人'}}" class="cu-bar bg-white">
+		<view class="action">
+			成绩单
+		</view>
+		<view class="action">
+			{{imgList.length}}/4
+		</view>
+	</view>
+	<view wx:if="{{method=='个人'}}" class="cu-form-group">
+		<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+				<image src='{{imgList[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+	<view class="cu-form-group  margin-top">
+		<view class="title">实习时长</view>
+		<picker bindchange="jobPeriodChange" value="{{jobPeriodIndex}}" range="{{jobPeriodPicker}}" range-key="{{'name'}}">
+			<view class="picker">
+				{{jobPeriodIndex!=null?jobPeriodPicker[jobPeriodIndex].name:'禁止换行，超出容器部分会以 ... 方式截断'}}
+			</view>
+		</picker>
+	</view>
+
+  	<view class="cu-form-group">
+		<view class="title">每周实习天数</view>
+		<picker bindchange="jobDayNumChange" value="{{jobDayNumIndex}}" range="{{jobDayNumPicker}}" range-key="{{'name'}}">
+			<view class="picker">
+				{{jobDayNumIndex!=null?jobDayNumPicker[jobDayNumIndex].name:'禁止换行，超出容器部分会以 ... 方式截断'}}
+			</view>
+		</picker>
+	</view>
+
+	<!-- <view class="cu-form-group">
+		<view class="title">联系方式</view>
+		<input value="{{jobName}}" placeholder="电话"></input>
+		<input value="{{jobName}}" placeholder="邮箱"></input>
+	</view> -->
+
+	<cu-contact id="contact">
+	</cu-contact>
+
+	<view class="cu-form-group">
+		<view class="title">指导老师</view>
+		<picker bindchange="teacherChange" value="{{teacherIndex}}" range="{{teacherPicker}}" range-key="{{'teacherName'}}">
+			<view class="picker">
+				{{teacherPicker[teacherIndex].teacherName}}
+			</view>
+		</picker>
+	</view>
+
+	<view class="padding flex flex-direction">
+	<button class="cu-btn bg-red margin-tb-sm lg" bindtap="onSubmit">发布</button>
+	</view>

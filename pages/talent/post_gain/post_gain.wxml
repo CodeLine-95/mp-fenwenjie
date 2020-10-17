@@ -1,0 +1,58 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">发布成果展示</view>
+</cu-custom>
+<view class="cu-bar bg-white margin-top">
+    <view class="action">
+        封面图
+    </view>
+    <view class="action">
+        {{imgList.length}}/1
+    </view>
+</view>
+<view class="cu-form-group">
+    <view class="grid col-1 grid-square flex-sub">
+        <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+            <image src='{{imgList[index]}}' mode='aspectFill'></image>
+            <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                <text class="cuIcon-close"></text>
+            </view>
+        </view>
+        <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
+            <text class="cuIcon-cameraadd"></text>
+        </view>
+    </view>
+</view>
+<view class="cu-form-group">
+    <view class="title">关联单位</view>
+    <!-- <picker bindchange="companyChange" value="{{companyIndex}}" range="{{companyPicker}}">
+        <view class="picker">
+            {{companyIndex!=null?companyPicker[companyIndex]:'禁止换行，超出容器部分会以 ... 方式截断'}}
+        </view>
+    </picker> -->
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+        {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}
+        </view>
+  </picker>
+</view>
+
+<view class="cu-form-group">
+    <view class="title">关联岗位信息</view>
+    <picker bindchange="positionChange" value="{{positionIndex}}" range="{{positionPicker}}">
+        <view class="picker">
+            {{positionIndex!=null?positionPicker[positionIndex]:'禁止换行，超出容器部分会以 ... 方式截断'}}
+        </view>
+    </picker>
+</view>
+
+<view class="cu-form-group">
+    <view class="title">文章标题</view>
+    <input value="{{title}}" placeholder="文章标题"></input>
+</view>
+<view class="cu-form-group">
+    <textarea maxlength="-1" value="{{content}}" placeholder="正文内容"></textarea>
+</view>
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-red margin-tb-sm lg">发布</button>
+</view>

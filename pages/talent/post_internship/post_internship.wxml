@@ -1,0 +1,94 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">发布实习</view>
+</cu-custom>
+<form>
+  	<view class="cu-form-group margin-top">
+		<view class="title">公司名称</view>
+		<picker bindchange="companyChange" value="{{companyIndex}}" range="{{companyPicker}}" range-key="{{'name'}}">
+			<view class="picker">
+				{{companyPicker[companyIndex].name}}
+			</view>
+		</picker>
+	</view>
+
+  	<view class="cu-form-group">
+		<view class="title">职位名称</view>
+		<input model:value="{{jobTitle}}" placeholder="职位名称"></input>
+	</view>
+
+	<view class="cu-form-group">
+		<view class="title">学历要求</view>
+		<picker bindchange="educationChange" value="{{educationIndex}}" range="{{educationPicker}}" range-key="{{'name'}}">
+			<view class="picker">
+				{{educationIndex!=null?educationPicker[educationIndex].name:'禁止换行，超出容器部分会以 ... 方式截断'}}
+			</view>
+		</picker>
+	</view>
+
+  	<view class="cu-form-group">
+		<view class="title">职位描述</view>
+		<text bindtap="write" class="text-{{article==null?'green':'red'}} margin-right write padding-right-xs text-right flex-sub padding-tb">{{article==null?'填写':'修改'}}</text>
+	</view>  
+
+	<view class="cu-form-group margin-top">
+		<view class="title">工作地点</view>
+		<!-- <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+			<view class="picker">
+				{{region[0]}}，{{region[1]}}，{{region[2]}}
+			</view>
+		</picker> -->
+		<text bindtap="selectCity" class="text-{{city.cityCode==null?'blue':'red'}} margin-right write padding-right-xs text-right flex-sub padding-tb">{{city.cityName}}</text>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">详细地址</view>
+		<input model:value="{{workAddress}}" placeholder="详细地址"></input>
+		<text class="cuIcon-locationfill text-orange"></text>
+	</view>
+  	<view class="cu-form-group">
+		<view class="title">截至日期</view>
+		<picker mode="date" model:value="{{end_date}}" start="2015-09-01" end="2099-09-01" bindchange="DateChange">
+			<view class="picker">
+				{{end_date}}
+			</view>
+		</picker>
+	</view>  	
+
+ 	<cu-charge id="component"></cu-charge>
+  	<view class="cu-form-group margin-top">
+		<view class="title">日薪</view>
+		<picker bindchange="dayWageChange" value="{{dayWageIndex}}" range="{{dayWagePicker}}" range-key="{{'name'}}">
+			<view class="picker">
+				{{dayWageIndex!=null?dayWagePicker[dayWageIndex].name:'禁止换行，超出容器部分会以 ... 方式截断'}}
+			</view>
+		</picker>
+	</view>  	
+	<view class="cu-form-group">
+		<view class="title">实习时长</view>
+		<picker bindchange="jobPeriodChange" value="{{jobPeriodIndex}}" range="{{jobPeriodPicker}}" range-key="{{'name'}}">
+			<view class="picker">
+				{{jobPeriodIndex!=null?jobPeriodPicker[jobPeriodIndex].name:'禁止换行，超出容器部分会以 ... 方式截断'}}
+			</view>
+		</picker>
+	</view>
+
+  	<view class="cu-form-group">
+		<view class="title">每周实习天数</view>
+		<picker bindchange="jobDayNumChange" value="{{jobDayNumIndex}}" range="{{jobDayNumPicker}}" range-key="{{'name'}}">
+			<view class="picker">
+				{{jobDayNumIndex!=null?jobDayNumPicker[jobDayNumIndex].name:'禁止换行，超出容器部分会以 ... 方式截断'}}
+			</view>
+		</picker>
+	</view>
+
+  	<view class="cu-form-group">
+		<view class="title">招聘人数</view>
+		<input type="number" placeholder="人数" model:value="{{peopleNum}}"></input>
+		<view class="title">人</view>
+	</view>
+	
+	
+</form>
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-red margin-tb-sm lg" bindtap="onSubmit">发布</button>
+</view>

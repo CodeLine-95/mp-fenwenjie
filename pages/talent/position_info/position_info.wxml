@@ -1,0 +1,98 @@
+
+<!-- <view class="bg-white body"> -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">职位详情</view>
+  </cu-custom>
+
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text class="text-xl text-bold">{{position.jobTitle}}</text>
+    </view>
+  </view>
+  <view class="bg-white padding-left">
+    <view class="flex text-lg align-center">
+        <view>{{position.cityName }}</view>
+        <view class="padding-left-sm">|</view>
+        <view class="padding-left-sm">{{position.workMonths}}个月</view>
+        <view class="padding-left-sm">|</view>
+        <view class="padding-left-sm">{{position.workDays}}天/每周</view>
+    </view>
+    <view class="text-lg text-red text-bold padding-top-sm padding-bottom">
+        {{position.salary}}
+    </view>
+  </view>
+
+  <view class="cu-list bg-white margin-top">
+    <view data-id="{{position.companyId }}"  bindtap="company" class="cu-item padding-sm flex justify-between arrow">
+        <view class="cu-avatar radius xl" style="background-image:url({{position.companyLogoUrl }});"></view>
+        <view class="text-xl flex flex-sub align-center padding-left">
+        {{position.companyName}}
+        </view>
+        <view class="text-xl flex align-center">
+            <text class="cuIcon-right lg text-gray"></text>
+        </view>
+    </view>
+  </view>
+
+  
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text class="text-xl text-bold">职位描述</text>
+    </view>
+  </view>
+  <view class="bg-white padding">
+    <rich-text nodes="{{html}}" ></rich-text>
+  </view>
+  <!-- <view class="bg-white padding-left padding-right padding-bottom text-lg">
+      <view >1、负责字节跳动产品的后台开发工作</view>
+      <view >2、主要实现语言python和golang</view>
+  </view>
+    <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text class="text-xl text-bold">职位要求</text>
+    </view>
+  </view>
+  <view class="bg-white padding-left padding-right padding-bottom text-lg">
+      <view >1、本科及以上21届毕业生（可20年保研)</view>
+      <view >2、良好的设计和编码品味，热爱写代码</view>
+      <view >3、较好的产品意识，愿意将产品效果做为工作重要的驱动因素</view>
+      <view >4、掌握WEB后端开发技术:协议、架构、存储、缓存、安全等</view>
+      <view >5、积极乐观，认真负责，乐于协作</view>
+      <view >6、每周可以实习3天以上，连续实习3个月以上</view>
+  </view> -->
+    <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text class="text-xl text-bold">工作地点</text>
+    </view>
+  </view>
+  <view class="bg-white padding-left padding-right padding-bottom text-lg">
+      <view >北京海淀区八里庄街道办事处{{position.workAddress}}</view>
+      <view >截止时间{{position.gmtFinish}}</view>
+  </view>
+
+    <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text class="text-xl text-bold">负责人</text>
+    </view>
+  </view>
+  <!-- <view class="bg-white padding-left padding-right padding-bottom text-lg  margin-bottom ">
+      <view wx:for="{{position.contacts}}" class="flex align-center">
+        <view class="padding-right" >{{item.name}}</view>
+        <view class="padding-right">{{item.tel}} </view>
+        <view >{{item.email}}</view>
+        
+      </view>
+  </view> -->
+
+  <view wx:for="{{position.contacts}}" class="flex bg-white text-lg padding-lr padding-bottom">
+    <view class="flex-sub   radius">{{item.name}}</view>
+    <view class="flex-twice   radius">{{item.tel}}</view>
+    <view class="flex-twice   radius">{{item.email}}</view>
+  </view>
+<!-- </view> -->

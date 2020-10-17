@@ -1,0 +1,133 @@
+<!--pages/my/check/check.wxml-->
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">审核列表</view>
+</cu-custom>
+<!-- 内容部分 -->
+
+<!-- 标题部分 -->
+<view class="container">
+    <view class="titleOne">
+		<view bindtap="waitCheckHandler" class="{{waitCheckFlag==1?'blue':'black'}}">待审核</view>
+		<view bindtap="passCheckHandler" class="{{passCheckFlag==1?'blue':'black'}}">已审核</view>
+    </view>
+    <view class="titleTwo">
+		<view bindtap="userCheckHandler" class="{{userCheckFlag==1?'blue':'black'}}">用户审核</view>
+		<view bindtap="practiceCheckHandler" class="{{practiceCheckFlag==1?'blue':'black'}}">实践审核</view>
+    </view>
+
+    <!-- 待审核  用户审核 -->
+    <view wx:if="{{waitCheckFlag && userCheckFlag}}">
+		<view wx:for="{{waitUserList}}" wx:key="index">
+			<navigator hover-class="none" url="/pages/my/user_check_info/user_check_info?userId={{item.userId}}" open-type="navigate">
+				<view class="listContainer">
+					<view class="image">
+						<image src="{{item.wxIcon}}" mode="aspectFill"></image>
+					</view>
+					<view class="info">
+						<view class="infoTitle">
+							<view class="name">{{item.realName}}</view>
+							<view class="sort">{{item.userIdentity==1?'学生用户':'企业用户'}}</view>
+							<view class="data">2020-11-02 11:35</view>
+						</view>
+						<view class="infoBottom">
+							<view>{{item.organizeName}}</view>
+						</view>
+					</view>
+				</view>
+			</navigator>
+		</view>
+    </view>
+
+    <!-- 待审核 实践审核 -->
+	<view wx:if="{{waitCheckFlag && practiceCheckFlag}}">
+		<view wx:for="{{waitPracticeList}}" wx:key="index">
+			<navigator hover-class="none" url="/pages/my/practice_check_info/practice_check_info?postId={{item.postId}}" open-type="navigate">
+				<view class="listContainer">
+					<view class="image">
+						<image src="{{item.wxIcon}}" mode="aspectFill"></image>
+					</view>
+					<view class="info">
+						<view class="infoTitle">
+							<view class="name">{{item.title}}</view>
+							<view class="sort">{{item.postType==1?'个人':'高校'}}</view>
+							<view class="data">{{item.gmtUpdateFormat}}</view>
+						</view>
+						<view class="infoMid">
+							<view>{{item.schoolName}} {{item.majorName}}</view>
+						</view>
+						<view class="infoBottom">
+							<view>期待岗位：{{item.jobTitle}}</view>
+							<view>期待地点：{{item.cityName}}</view>
+						</view>
+					</view>
+				</view>
+			</navigator>
+		</view>
+	</view>
+
+    <!-- 已审核 用户审核 -->
+    <view wx:if="{{passCheckFlag && userCheckFlag}}">
+		<view wx:for="{{passUserList}}" wx:key="index">
+			<view class="listContainer filterGray">
+				<view class="image">
+					<image src="{{item.wxIcon}}" mode="aspectFill"></image>
+				</view>
+				<view class="info">
+					<view class="infoTitle">
+						<view class="name">{{item.realName}}</view>
+						<view class="sort">{{item.userIdentity==1?'学生用户':'企业用户'}}</view>
+						<view class="data">2020-11-02 11:35</view>
+					</view>
+					<view class="userStatus">
+						<view wx:if="{{item.userStatus==1}}">
+							<image src="/images/iconfont/duigou1.png"></image>
+						</view>
+						<view wx:else>
+							<image src="/images/iconfont/chahao.png"></image>
+						</view>
+					</view>
+					<view class="infoBottom">
+						<view>{{item.organizeName}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+    </view>
+
+    <!-- 已审核 实践审核 -->
+    <view wx:if="{{passCheckFlag&&practiceCheckFlag}}">
+		<view wx:for="{{passPracticeList}}" wx:key="index">
+			<view class="listContainer filterGray">
+				<view class="image">
+					<image src="{{item.wxIcon}}" mode="aspectFill"></image>
+				</view>
+				<view class="info">
+					<view class="infoTitle">
+						<view class="name">{{item.title}}</view>
+						<view class="sort">{{item.postType==1?'个人':'高校'}}</view>
+						<view class="data">{{item.gmtUpdateFormat}}</view>
+					</view>
+					<view class="userStatus">
+						<view wx:if="{{item.postStatus==1}}">
+							<image src="/images/iconfont/duigou1.png"></image>
+						</view>
+						<view wx:else>
+							<image src="/images/iconfont/chahao.png"></image>
+						</view>
+					</view>
+					<view class="infoMid">
+						<view>{{item.schoolName}} {{item.majorName}}</view>
+					</view>
+					<view class="infoBottom">
+						<view>期待岗位：{{item.jobTitle}}</view>
+						<view>期待地点：{{item.cityName}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+  

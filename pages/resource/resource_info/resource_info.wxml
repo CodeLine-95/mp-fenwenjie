@@ -1,0 +1,41 @@
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">享资源</view>
+</cu-custom>
+<!-- 中国农业大学智慧农业研讨会
+主办方:中国农业大学
+地点∶东校区3号楼1201
+时间:2020-11-0211:15-2020-11-0212:15
+人数∶100人
+ -->
+<view class="padding-tb bg-white margin-top">
+    <view class="text-xl flex justify-center padding-bottom-xs">{{resource.title}}</view>
+    <view class="text-lg margin-left-lg">
+        <view class="padding-bottom-xs">主办方:{{resource.organizeName}}</view>
+        <view class="padding-bottom-xs">地点∶{{resource.address}}</view>
+        <view class="padding-bottom-xs">时间:{{resource.startTime}}-{{resource.endTime}}</view>
+        <view class="padding-bottom-xs">人数∶{{resource.count}}人</view>
+    </view>
+</view>
+
+<view class="bg-white padding">
+    <rich-text nodes="{{html}}" ></rich-text>
+</view>
+<!-- <view class="margin-lr flex justify-between text-lg align-center">
+    <view >负责人</view>
+    <view >王辉</view>
+    <view >14729274839</view>
+    <view >alibaba@baibu.com</view>
+</view> -->
+  <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text class="text-xl text-bold">负责人</text>
+    </view>
+  </view>
+  <view wx:for="{{resource.contact}}" class="flex bg-white text-lg padding-lr padding-bottom">
+    <view class="flex-sub   radius">{{item.name}}</view>
+    <view class="flex-twice   radius">{{item.tel}}</view>
+    <view class="flex-twice   radius">{{item.email}}</view>
+  </view>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {    
+   "talent": "/pages/talent/home/home",
+   "practice": "/pages/practice/home/home",
+   "resource":"/pages/resource/home/home",
+   "harvest":"/pages/harvest/home/home",
+   "my": "/pages/my/home/home"
+  }
+}

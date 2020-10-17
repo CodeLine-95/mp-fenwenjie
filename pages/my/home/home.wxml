@@ -1,0 +1,53 @@
+<!--pages/my/home/home.wxml-->
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{false}}">
+    <view slot="content">我的</view>
+</cu-custom>
+
+<block wx:if="{{isLogin}}">
+	<view class="cu-list menu sm-border card-menu margin-top">
+		<view class="cu-item arrow" >
+			<navigator class="content" hover-class="none" url="/pages/my/my_info/my_info?id={{userInfo.id}}" open-type="navigate">
+				<view class="padding">
+					<view class="cu-avatar xl round margin" style="background-image:url({{userInfo.wxIcon}});"></view>
+					<text>{{userInfo.userName}}</text>
+					<input type="text" style="display: none;" name="userName" value="{{userInfo.userName}}"></input>
+					<input type="text" style="display: none;" name="wxName" value="{{userInfo.wxName}}"></input>
+					<input type="text" style="display: none;" name="wxIcon" value="{{userInfo.wxIcon}}"></input>
+				</view>
+			</navigator>
+		</view>
+	</view>
+
+	<view class="cu-list menu sm-border card-menu margin-top" wx:for="{{viewList}}" wx:key="key" wx:index="{{item.index}}">
+		<view class="cu-item arrow" >
+			<navigator class="content" hover-class="none" url="{{item.itemUrl}}" open-type="navigate">
+				<text class="cuIcon-writefill text-orange"></text>
+				<text class="text-grey">{{item.itemName}}</text>
+			</navigator>
+		</view>
+	</view>
+	<view class="padding"></view>
+	<view class="padding"></view>
+	<view class="padding"></view>
+	<view class="padding"></view>
+	<view class="padding"></view>
+	<view class="padding"></view>
+	<view class="padding"></view>
+	<view class="padding flex flex-direction">
+		<button class="cu-btn bg-grey lg" bindtap="logout">退出登录</button>
+	</view>
+</block>
+<block wx:else>
+	<view class="padding margin-top-lg" style="text-align: center;">
+		<view class="cu-avatar xl round margin-left bg-white"></view>
+	</view>
+	
+	<view class="cu-form-group margin-top" style="text-align: center;">
+		<button class="cu-btn block lg bg-green" bindtap="login">登录</button>
+	</view>
+	
+	<view class="cu-form-group margin-top" style="text-align: center;">
+		<button class="cu-btn block lg bg-green" bindtap="auth">认证</button>
+	</view>
+</block>

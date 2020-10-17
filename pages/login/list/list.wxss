@@ -1,0 +1,16 @@
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+/* .lg{
+	width: 90vh;
+} */
+
+.cu-form-group{
+	background-color: rgba(0,0,0,0);
+	display: block;
+	margin: auto 200rpx;
+}
+
+.margin-top-lg{
+	margin-top: 200rpx;
+}

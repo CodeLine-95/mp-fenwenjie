@@ -1,0 +1,16 @@
+/* pages/my/my_info/my_info.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+.image image{
+    /* 居中 */
+  margin: 0 auto;  
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 161rpx;
+  height: 161rpx;
+  border-radius: 50%;
+  }
+  .text-x3{
+    text-align: center;
+  }

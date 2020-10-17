@@ -1,0 +1,4 @@
+/* pages/talent/post_gain/post_gain.wxss */
+textarea{
+    height: 400rpx !important;
+}

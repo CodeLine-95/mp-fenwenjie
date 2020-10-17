@@ -1,0 +1,19 @@
+
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+    <view slot="content">用户登录</view>
+</cu-custom>
+
+<view class="padding margin-top-lg" style="text-align: center;">
+	<view class="cu-avatar xl round margin-left bg-white"></view>
+</view>
+
+<view class="cu-form-group margin-top" style="text-align: center;">
+	<button class="cu-btn block lg bg-green" bindtap="login">登录</button>
+</view>
+
+<view class="cu-form-group margin-top" style="text-align: center;">
+	<button class="cu-btn block lg bg-green" bindtap="auth">认证</button>
+</view>
+

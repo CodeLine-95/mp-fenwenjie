@@ -1,0 +1,35 @@
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">晒收获</view>
+</cu-custom>
+<!-- <view >
+“追梦之旅”-百度产品实
+习有感
+小花中国农业大学
+
+</view> -->
+  <scroll-view class="scroll-list" bindscrolltolower="lower2"
+  scroll-y style="width: 100%; height: 100vh;"
+  refresher-enabled="{{true}}"
+  refresher-threshold="{{80}}"
+  refresher-default-style="none"
+  refresher-background="lightgreen">
+    <navigator wx:for="{{harvest}}" hover-class="none" url="/pages/harvest/harvest_info/harvest_info?postId={{item.postId}}">
+        <view class="padding bg-white margin-top-sm shadow-warp">
+        <view class="flex justify-between">
+                <view class=" text-xl">{{item.title}}</view>
+                <view class="image">
+                    <image src="{{item.coverUrl}}" mode="aspectFill"></image>
+                </view>
+        </view>
+            <view class="flex text-lg text-content">
+                <view class="margin-right">{{item.userName}}</view>
+                <view class="margin-right">{{item.organizeName}}</view>
+                <view >{{item.gmtCreate}}</view>
+        </view>
+        </view>
+    </navigator>
+</scroll-view>
+
+<cu-fill></cu-fill>

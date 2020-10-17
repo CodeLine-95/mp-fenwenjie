@@ -1,0 +1,165 @@
+<view class="comment-container bg-white">
+  <view class="text-xl padding-left-sm padding-top-sm">精彩评论</view>
+
+<!-- 弹框 -->
+  <view class="model" wx:if="{{showModal}}">
+    <view class="content">
+
+      <view class="title flex align-center text-content text-xl">
+        <view class="padding" bindtap="hideModal">
+          <text class="cuIcon-back" ></text>
+        </view>
+        <view >回复(999)</view>
+      </view>
+      <!-- 作者评论 -->
+      <view class="origin">
+            <view class="comment-item padding-sm">
+              <view class="comment-item-top flex justify-between">
+                <view class="comment-item-top-avatar" >
+                  <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg"></image>
+                </view>
+
+                <view class="comment-item-top-user  text-content flex-sub padding-left-sm">
+                  <view class="text-xl">用户一</view>
+                  <view class="comment-item-info-time text-grey">2019年6月6日</view>
+                </view>
+                
+                <view class="comment-item-top-digg">
+                  <text class="text-gray appreciate-num">23</text>
+                  <text class="cuIcon-appreciate lg text-gray"></text>
+                </view>
+              </view>
+
+              <view class="comment-item-text text-lg text-content padding-left-sm">
+                顺应时代大潮、把握发展大势！
+              </view>
+
+              <view class="comment-item-info flex padding-left-sm align-center">
+                <view class="comment-item-info-reply">
+                </view>
+              </view>
+
+            </view>
+      </view>
+      <view class="split"></view>
+      <!-- 回复列表 -->
+      <view class="reply-list bg-white">
+
+        <view class="text-lg margin-left-sm margin-top-sm text-bold ">
+          全部回复
+        </view>
+        <view class="reply-list-item" wx:for="{{total}}">
+                   <view class="comment-item padding-sm">
+              <view class="comment-item-top flex justify-between">
+                <view class="comment-item-top-avatar" >
+                  <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg"></image>
+                </view>
+
+                <view class="comment-item-top-user  text-content flex-sub padding-left-sm">
+                  <view class="text-xl">用户一</view>
+                  <view class="comment-item-info-time text-grey">2019年6月6日</view>
+                </view>
+                
+                <view class="comment-item-top-digg">
+                  <text class="text-gray appreciate-num">23</text>
+                  <text class="cuIcon-appreciate lg text-gray"></text>
+                </view>
+              </view>
+
+              <view class="comment-item-text text-lg text-content padding-left-sm">
+                顺应时代大潮、把握发展大势！
+              </view>
+
+              <view class="comment-item-info flex padding-left-sm align-center">
+                <view class="comment-item-info-reply">
+                </view>
+              </view>
+              
+            </view>
+        </view>
+
+      </view>
+
+        <!-- 评论填充 -->
+      <view class="cu-bar search bg-white my-margin-top">
+        <view class="search-form round">
+          <text class="cuIcon-comment"></text>
+        </view>
+        <view class="action">
+          <button class="cu-btn bg-green shadow-blur round">评论</button>
+        </view>
+      </view>
+
+      <!-- 回复评论 -->
+        <!-- 发布评论 -->
+      <view class="cu-bar search bg-white my-margin-top comment">
+        <view class="search-form round">
+          <text class="cuIcon-comment"></text>
+          <input type="text" placeholder="回复" confirm-type="search" model:value="{{reContent}}"></input>
+        </view>
+        <view class="action">
+          <button class="cu-btn bg-green shadow-blur round" bindtap="reComment">回复</button>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+  
+  <!-- 评论列表 -->
+  <view wx:for="{{total}}" class="comment-item padding-sm">
+    <view class="comment-item-top flex justify-between">
+      <view class="comment-item-top-avatar" >
+        <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg"></image>
+      </view>
+
+      <view class="comment-item-top-user  text-content flex-sub padding-left-sm">
+        <view class="text-xl">用户一</view>
+        <view class="comment-item-info-time text-grey">2019年6月6日</view>
+      </view>
+      
+      <view class="comment-item-top-digg">
+        <text class="text-gray appreciate-num">23</text>
+        <text class="cuIcon-appreciate lg text-gray"></text>
+      </view>
+    </view>
+
+    <view class="comment-item-text text-lg text-content padding-left-sm">
+      顺应时代大潮、把握发展大势！
+    </view>
+
+    <view class="comment-item-info flex padding-left-sm align-center">
+      <view class="comment-item-info-reply" bindtap="showModal" data-id="1">
+        <!-- <text class="xl text-blue">回复</text> -->
+        <view class="cu-tag round text-content" >
+          10条回复<text class="cuIcon-right xl text-gray"></text>
+        </view>
+      </view>
+      <!-- <view class="comment-item-info-time margin-left">3分钟前</view> -->
+    </view>
+
+  </view>
+
+
+
+  <!-- 评论填充 -->
+  <view class="cu-bar search bg-white my-margin-top">
+    <view class="search-form round">
+      <text class="cuIcon-comment"></text>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow-blur round">评论</button>
+    </view>
+  </view>
+
+  <!-- 发布评论 -->
+  <view class="cu-bar search bg-white my-margin-top comment">
+    <view class="search-form round">
+      <text class="cuIcon-comment"></text>
+      <input type="text" placeholder="评论" confirm-type="search" model:value="{{content}}"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow-blur round" bindtap="comment">评论</button>
+    </view>
+  </view>
+</view>

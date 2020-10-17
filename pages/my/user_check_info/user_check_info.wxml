@@ -1,0 +1,33 @@
+<!--pages/my/user_check_info/user_check_info.wxml-->
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">用户审核</view>
+</cu-custom>
+<!-- 内容部分 -->
+<view class="container">
+    <view class="person">
+        <view class="personRight">
+            <image src="{{detail.userIcon}}"></image>
+        </view>
+    </view>
+
+    <view class="content">
+        <view class="expectItem"><text>学校信息</text> {{detail.organizeName}} </view>
+        <view class="reportCardTitle">身份证明</view>
+        <view class="reportCard">
+            <view wx:for="{{detail.certificateUrls}}" wx:key="index">
+                <image src="{{item}}"></image>
+            </view>
+        </view>
+    </view>
+
+    <view class="bottom">
+        <button bindtap="userAudit" data-status="1" data-userId="{{userInfo.id}}">通过</button>
+        <button bindtap="userAudit" data-status="0" data-userId="{{userInfo.id}}">拒绝</button>
+    </view>
+</view>
+
+
+
+

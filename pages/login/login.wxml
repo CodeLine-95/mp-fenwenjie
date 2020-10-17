@@ -1,0 +1,25 @@
+<!--pages/login/login.wxml-->
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+    <view slot="content">登录</view>
+</cu-custom>
+<form bindsubmit="bindsubmit">
+	<view class="cu-form-group margin-top">
+		<view class="title">用户名：</view>
+		<input placeholder="" name="userName"></input>
+	</view>
+
+	<view class="cu-form-group">
+		<view class="title">密码：</view>
+		<input type="password" placeholder="" name="password"></input>
+	</view>
+	
+	<input type="text" style="display: none;" name="wxName" value="yusheng"></input>
+	<input type="text" style="display: none;" name="wxIcon" value="{{userInfo.avatarUrl}}"></input>
+	<input type="text" style="display: none;" name="wxId" value="{{openId}}"></input>
+
+	<view class="padding flex flex-direction">
+		<button class="cu-btn bg-grey lg" form-type="submit">登录</button>
+	</view>
+</form>

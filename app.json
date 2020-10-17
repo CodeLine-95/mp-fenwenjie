@@ -1,0 +1,44 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/my/user_check_info/user_check_info",
+		"pages/my/publish/publish",
+		"pages/my/check/check",
+		"pages/my/practice_check_info/practice_check_info",
+		"pages/my/home/home",
+		"pages/login/login",
+		"pages/auth/auth",
+		"pages/my/my_info/my_info",
+		"pages/my/info/info",
+		"pages/my/reset/reset",
+		"pages/login/list/list",
+		"pages/authen/authen",
+		"pages/talent/home/home",
+		"pages/talent/post_internship/post_internship",
+		"pages/talent/position_info/position_info",
+		"pages/talent/company_info/company_info",
+		"pages/talent/post_gain/post_gain",
+		"pages/talent/post_resource/post_resource",
+		"pages/talent/post_practice/post_practice",
+		"pages/resource/home/home",
+		"pages/resource/resource_info/resource_info",
+		"pages/harvest/harvest_info/harvest_info",
+		"pages/talent/write_internship/write_internship",
+		"pages/resource/select_city/select_city",
+		"pages/talent/preview/preview",
+		"pages/practice/home/home",
+		"pages/practice/practice_info/practice_info",
+		"pages/practice/select_city/select_city"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "ColorUI",
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "white"
+	},
+	"usingComponents": {
+		"cu-custom": "/colorui/components/cu-custom"
+	},
+	"sitemapLocation": "sitemap.json"
+}

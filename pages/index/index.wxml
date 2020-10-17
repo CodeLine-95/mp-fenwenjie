@@ -1,0 +1,37 @@
+<talent id="talent" wx:if="{{PageCur=='talent'}}"></talent>
+<practice id="practice" wx:if="{{PageCur=='practice'}}"></practice>
+<resource id="resource" wx:if="{{PageCur=='resource'}}"></resource>
+<harvest id="harvest" wx:if="{{PageCur=='harvest'}}"></harvest>
+<my id="my" wx:if="{{PageCur=='my'}}"></my>
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action" bindtap="NavChange" data-cur="talent">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/basics{{PageCur=='talent'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='talent'?'text-green':'text-gray'}}">{{tabs[0].name}}</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="practice">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/component{{PageCur=='practice'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='practice'?'text-green':'text-gray'}}">{{tabs[1].name}}</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="resource">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/plugin{{PageCur=='resource'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='resource'?'text-green':'text-gray'}}">{{tabs[2].name}}</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="harvest">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/about{{PageCur=='harvest'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='harvest'?'text-green':'text-gray'}}">{{tabs[3].name}}</view>
+  </view>
+    <view class="action" bindtap="NavChange" data-cur="my">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/about{{PageCur=='my'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='my'?'text-green':'text-gray'}}">{{tabs[4].name}}</view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+/* pages/login/login.wxss */
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+.input{
+  border:1px solid gainboro；
+  margin：15rpx；
+}

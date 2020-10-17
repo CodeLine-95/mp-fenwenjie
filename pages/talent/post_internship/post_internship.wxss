@@ -1,0 +1,4 @@
+/* pages/talent/post_internship/post_internship.wxss */
+.write{
+    padding-right: 16rpx;
+}

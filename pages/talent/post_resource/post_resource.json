@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "cu-charge":"../../../components/charge/charge",
+    "cu-expert":"../../../components/expert/expert"
+  }
+}

@@ -1,0 +1,31 @@
+<!--components/rt/rt.wxml-->
+
+<view wx:if="{{!readOnly}}" class="function">
+
+  <view class="function1">
+    <text class="{{selected_function1==item?'f1st':''}}" wx:for="{{function1}}" 
+          bindtap="change_function1" data-selected="{{item}}">{{item}}</text>
+    
+    <image src="./images/clear.png" mode="aspectFill" bindtap="clear"></image>
+    <image src="./images/redo.png" mode="aspectFill" bindtap="redo"></image>
+    <image src="./images/undo.png" mode="aspectFill" bindtap="undo"></image>
+    
+  </view>
+
+  <view class="function2">
+    <view wx:for="{{function2}}" class="{{item.selected?'f2st':''}}"   bindtap="format" 
+      data-name="{{item.name}}" data-value="{{item.value}}" data-text="{{item.text}}">
+      <image src="{{item.img}}" mode="aspectFill"></image>
+      <text>{{item.text}}</text>
+    </view>
+  </view>
+
+</view>
+
+<view class="editor" style="height:{{readOnly?'100%':'750rpx'}}">
+  <editor id="editor" placeholder="请输入……" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange" bindready="onEditorReady" read-only="{{readOnly}}" >
+  
+  </editor>
+</view>
+
+<button wx:if="{{!readOnly && button_text}}" type="primary" bindtap="save">{{button_text}}</button>

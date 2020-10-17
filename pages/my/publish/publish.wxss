@@ -1,0 +1,128 @@
+/* pages/my/publish/publish.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.image image{
+    height: 150rpx;
+    width: 150rpx;
+  }
+  
+  .scroll-list{
+    height: 500rpx;
+  }
+  .practice{
+    background-color: rgb(255, 255, 255);
+    padding: 30rpx;
+    margin-top: 20rpx;
+  }
+  .practice .image image{
+    height: 100%;
+    width: 100rpx;
+  
+  }
+  .practice .title{
+    font-size: 40rpx;
+  }
+  .practice .address{
+    display: flex;
+  }
+  .practice .bottom{
+    display: flex;
+  }
+  .practice .bottom .message{
+    padding-top: 66rpx;
+    font-size: 34rpx;
+    display: flex;
+  }
+  .practice .bottom .message view{
+    padding-left: 30rpx;
+  
+  }
+  .practice .address view{
+    padding: 10rpx 20rpx 10rpx 0rpx;
+    font-size: 30rpx;
+  }
+  .test{
+    padding: 0;
+  	height: calc(100rpx + env(safe-area-inset-bottom) / 2);
+  	padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+  }
+  .top{
+    display: flex;
+    justify-content: space-between;
+  }
+  .salary{
+    text-align: right;
+    font-size: 40rpx;
+    color: red;
+  }
+  .time{
+    text-align: right;
+    padding: 10rpx 0rpx 10rpx 0rpx;
+    font-size: 30rpx;
+  }
+  
+  /* 企业横向滚动 */
+  .page-section-spacing{
+    margin-top: 60rpx;
+  }
+  .scroll-view_H{
+    white-space: nowrap;
+  }
+  .scroll-view-item{
+    height: 300rpx;
+  }
+  .scroll-view-item_H{
+    display: inline-block;
+    width: 100%;
+    /* height: 300rpx; */
+    /* border: 1px solid red; */
+  }
+  .company{
+    padding: 30rpx 0rpx 30rpx 0rpx;
+    background-color: rgb(255, 255, 255);
+  }
+  .my-margin-top{
+    margin-top: 20rpx;
+  }
+  /* .release{
+    border-radius: 90%;
+    background-color: red;
+    border: 1px solid #aaa;
+    width: 120rpx;
+    height: 120rpx;
+    position:fixed ;
+    right: 20rpx;
+    bottom: calc(120rpx + env(safe-area-inset-bottom) / 2);
+    text-align: center;
+    font-size: 30rpx;
+    color: #0081ff;
+    background-color:#aaa;
+  } */
+  .release image{
+    margin-top: -15rpx;
+    margin-left: 5rpx;
+    width:60rpx;
+    height:60rpx;
+    /* margin-top: 20rpx; */
+    /* margin-top: 35rpx; */
+  }
+  .release-text{
+    margin-top: -5rpx;
+  }
+  .release-list{
+    /* border: blue solid 1px; */
+    display: flex;
+    /* justify-content: space-around; */
+    position: fixed;
+    right: 0rpx;
+    justify-content: flex-end;
+    bottom: calc(120rpx + env(safe-area-inset-bottom) / 2);
+    width: 100%;
+  }
+  .release-list-item{
+    border-radius: 90%;
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 30rpx;
+  }

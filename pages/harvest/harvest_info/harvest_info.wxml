@@ -1,0 +1,39 @@
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">晒收获</view>
+</cu-custom>
+<!-- <view >
+“追梦之旅”-百度产品实
+习有感
+小花中国农业大学
+
+</view> -->
+<!-- <navigator hover-class="none" url="/pages/harvest/harvest_info/harvest_info?id=1&pw=2"> -->
+    <view class="padding bg-white margin-top-sm shadow-warp">
+       <view class="flex justify-center">
+            <view class=" text-xl">{{harvest.title}}</view>
+       </view>
+        <view class="flex text-lg text-content justify-center">
+            <view class="margin-right">{{harvest.userName}}</view>
+            <view class="margin-right">{{harvest.organizeName}}</view>
+            <view >{{harvest.gmtCreate}}</view>
+       </view>
+    </view>
+    
+<!-- </navigator> -->
+  <view class="cu-list bg-white margin-top">
+    <view data-id="{{harvest.postId}}"  bindtap="company" class="cu-item padding-sm flex justify-between arrow">
+        <view class="cu-avatar radius xl" style="background-image:url({{harvest.companyLogoUrl}});"></view>
+        <view class="text-xl flex flex-sub align-center padding-left">
+        {{harvest.companyName}}
+        </view>
+        <view class="text-xl flex align-center">
+            <text class="cuIcon-right lg text-gray"></text>
+        </view>
+    </view>
+  </view>
+  <view class="bg-white padding">
+    <rich-text nodes="{{html}}" ></rich-text>
+  </view>
+  <cu-comment></cu-comment>

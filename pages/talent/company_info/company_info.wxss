@@ -1,0 +1,4 @@
+/* pages/talent/company_info/company_info.wxss */
+page{
+    background-color: #fff;
+}

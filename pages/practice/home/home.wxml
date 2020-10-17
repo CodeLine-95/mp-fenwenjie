@@ -1,0 +1,51 @@
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{false}}">
+    <view slot="content">找实践</view>
+</cu-custom>
+<view class="flex align-center justify-between padding-lr  text-lg bg-white">
+    <view class="flex align-center">
+        <view class="padding-right-xs padding-tb bold text-{{type==1?'blue':'black'}}" bindtap="person">个人</view>
+        <view >|</view>
+        <view class="padding-left-xs padding-tb bold text-{{type==2?'blue':'black'}}"  bindtap="school">高校</view>
+    </view>
+    <view >
+        <view bindtap="selectCity" class="text-{{city.cityCode==null?'blue':'red'}}">{{city.cityName}}</view>
+    </view>
+</view>
+<scroll-view class="scroll-list" bindscrolltolower="lower2"
+scroll-y style="width: 100%; height: 1800rpx;"
+refresher-enabled="{{true}}"
+refresher-threshold="{{80}}"
+refresher-default-style="none"
+refresher-background="lightgreen"
+scroll-top='{{topNum}}'>
+    <navigator class="margin-top" wx:for="{{practiceList}}" hover-class="none" url="/pages/practice/practice_info/practice_info?postId={{item.postId}}&userName={{item.userName}}">
+		<view class="cu-card article no-card shadow-warp">
+			<view class="flex solid-bottom padding align-start" style="background-color: #fff;">
+				<view class="flex">
+					<view class="margin-xs">
+						<view class="title">
+							<block wx:if="{{item.type == 1}}">
+								<view class="text-cut">【个人】{{item.userName}}</view>
+							</block>
+							<block wx:elif="{{item.type == 2}}">
+								<view class="text-cut">【高校】{{item.userName}}</view>
+							</block>
+						</view>
+						<view class="content">
+							<view class="desc">
+								<view class="text-content">{{item.schoolName}} | {{item.learningStages}} | {{item.workMonths}}个月</view>
+								<view class="text-content">期望实习：{{item.jobTitle}}</view>
+								<view class="text-content">期望地点：{{item.cityName}}</view>
+							</view>
+						</view>
+					</view>
+					<view class="radius margin-left">
+						<view class="cu-avatar xl round margin-left" style="background-image:url({{item.userIcon}})"></view>
+					</view>
+				</view>
+			</view>
+		</view>
+    </navigator>
+</scroll-view>
+

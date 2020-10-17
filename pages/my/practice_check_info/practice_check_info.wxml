@@ -1,0 +1,41 @@
+<!--pages/my/practice_check_info/practice_check_info.wxml-->
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">实践审核</view>
+</cu-custom>
+<!-- 内容部分 -->
+<view class="container">
+    <view class="person">
+        <view class="personLeft">
+            <view>【{{detail.type==1?'高校':'个人'}}】{{detail.title}}</view>
+            <view>{{detail.schoolNmae}}|{{detail.learningStages}}|{{detail.workMonths}}个月</view>
+        </view>
+        <view class="personRight">
+            <image src="{{detail.userIcon}}"></image>
+        </view>
+    </view>
+
+    <view class="content">
+        <view class="expectItem"><text>期望实习</text> {{detail.jobTitle}} </view>
+        <view class="expectPosition"><text>期望地点</text>{{detail.cityName}}</view>
+        <view class="personInfoTitle">个人情况</view>
+        <view class="personInfo"><rich-text nodes="{{html}}" ></rich-text></view>
+        <view class="reportCardTitle">成绩单</view>
+        <view class="reportCard">
+            <view wx:for="{{detail.images}}" wx:key="index">
+                <image src="{{item}}"></image>
+            </view>
+        </view>
+        <view class="contact">
+            <view>联系方式</view>   
+            <view>{{detail.contact.tel}}</view> 
+            <view>{{detail.contact.email}}</view>
+        </view>
+    </view>
+
+    <view class="bottom">
+        <button bindtap="userAudit" data-status="1" data-postId="{{userInfo.id}}">通过</button>
+        <button bindtap="userAudit" data-status="0" data-postId="{{userInfo.id}}">拒绝</button>
+    </view>
+</view>

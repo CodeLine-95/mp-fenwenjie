@@ -1,0 +1,78 @@
+<!--pages/my/my_info/my_info.wxml-->
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">个人资料</view>
+</cu-custom>
+<form bindsubmit="bindsubmit">
+	<view class="padding text-center">
+		<view class="cu-avatar xl round margin" style="background-image:url({{wxIcon ? wxIcon : userInfo.wxIcon}});"></view>
+		<view class="text-grey" style="cursor: pointer;" bindtap="ChooseImage">编辑头像</view>
+		<input type="text" style="display: none;" name="id" value="{{userInfo.id}}"></input>
+		<input type="text" style="display: none;" name="wxId" value="{{openId}}"></input>
+		<input type="text" style="display: none;" name="wxName" value="{{userInfo.wxName}}"></input>
+		<input type="text" style="display: none;" name="wxIcon" value="{{wxIcon ? wxIcon : userInfo.wxIcon}}"></input>
+		<input type="text" style="display: none;" name="userIdentity" value="{{userInfo.userIdentity}}"></input>
+	</view>
+
+	<view class="flex-sub">
+		<view class="solid-bottom text-xl padding">
+			<block wx:if="{{userInfo.userIdentity == 1}}">
+				<text class="text-grey">企业用户</text>
+			</block>
+			<block wx:elif="{{userInfo.userIdentity == 2}}">
+				<text class="text-grey">学生用户</text>
+			</block>
+			<block wx:else>
+				<text class="text-grey">教师用户</text>
+			</block>
+		</view>
+		<view class="solid-bottom text-lg padding">
+			<text class="text-grey">用户名</text>
+		</view>
+		<view class="cu-list menu sm-border card-menu">
+			<view class="cu-item" >
+				<view class="cu-form-group" style="width: 100%;padding: 0;">
+					<input placeholder="" name="userName" value="{{userInfo.userName}}"></input>
+				</view>
+			</view>
+		</view>
+		<view class="solid-bottom text-lg padding">
+			<text class="text-grey">真实姓名</text>
+		</view>
+		<view class="cu-list menu sm-border card-menu">
+			<view class="cu-item" >
+				<view class="cu-form-group" style="width: 100%;padding: 0;">
+					<input placeholder="" name="realName" value="{{userInfo.realName}}"></input>
+				</view>
+			</view>
+		</view>
+		
+		<view class="solid-bottom text-lg padding">
+			<text class="text-grey">学校</text>
+		</view>
+		<view class="cu-list menu sm-border card-menu">
+			<view class="cu-item" >
+				<view class="cu-form-group" style="width: 100%;padding: 0;">
+					<input placeholder="" name="schoolName" value="{{userInfo.schoolName}}"></input>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="padding"></view>
+	<view class="cu-list menu sm-border card-menu margin-top">
+		<view class="cu-item arrow" >
+			<navigator class="content" hover-class="none" url="/pages/my/reset/reset?id={{userInfo.id}}" open-type="navigate">
+				<text class="cuIcon-unlock text-orange"></text>
+				<text class="text-grey">修改密码</text>
+			</navigator>
+		</view>
+	</view>
+
+	<view class="padding"></view>
+	<view class="padding flex flex-direction">
+		<button class="cu-btn bg-grey lg" form-type="submit">保存</button>
+	</view>
+</form>
+

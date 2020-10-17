@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "cu-editor":"/components/rich-text/rich-text"
+  }
+}

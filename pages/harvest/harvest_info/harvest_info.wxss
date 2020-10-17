@@ -1,0 +1,5 @@
+/* pages/harvest/harvest_info/harvest_info.wxss */
+.image image{
+    height: 150rpx;
+    width: 150rpx;
+}

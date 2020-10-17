@@ -1,0 +1,164 @@
+<!-- 头部 -->
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">我的发布</view>
+  </cu-custom>
+<!-- 内容部分 -->
+<view class="bg-white solid-bottom">
+	<view class="bg-white nav">
+		<view class="flex text-center padding">
+			<view class="cu-item" style="width: 33.3333%;" class="{{index==TabCur?'text-orange cur':''}}" wx:for="{{tabList}}" wx:key="{{index}}"
+			 bindtap="tabSelect" data-id="{{item.id}}">
+				{{item.name}}
+			</view>
+		</view>
+	</view>
+</view>
+<!-- 觅人才 -->
+<block wx:if="{{companyList.length > 0 && practiceList.length <= 0 && resourceList.length <= 0 && harvestList.length <= 0}}">
+	<scroll-view class="scroll-list" bindscrolltolower="companyListLower"
+		scroll-y style="width: 100%; height: 1800rpx;"
+		refresher-enabled="{{true}}"
+		refresher-threshold="{{80}}"
+		refresher-default-style="none"
+		refresher-background="lightgreen"
+		scroll-top='{{topNum}}'>
+		<view wx:for="{{companyList}}" class="practice">
+			<navigator hover-class="none" url="/pages/talent/position_info/position_info?postId ={{item.postId}}">
+				<view class="top">
+					<view class="left">
+						<view class="title">
+							{{item.jobTitle}}
+						</view>
+						<view class="address">
+							<view>{{item.cityName }}</view>
+							<view>{{item.workMonths }}个月</view>
+							<view>{{item.workDays }}天/每周</view>
+						</view>
+					</view>
+					<view class="right">
+						<view class="salary">{{item.salary }}</view>
+						<view class="time">{{item.gmtCreate }}</view>
+					</view>
+				</view>
+				<view class="bottom">
+					<view class="image">
+						<image src="{{item.companyLogoUrl }}" mode="aspectFill"></image>
+					</view>
+					<view class="message">
+						<view>{{item.companyName}}</view>
+						<!-- <view>{{item.team}}</view> -->
+						<view>现招{{item.jobsCount }}人</view>
+					</view>
+				</view>
+			</navigator>
+		</view>
+	</scroll-view>
+</block>
+<!-- 找实践 -->
+<block wx:elif="{{practiceList.length > 0 && companyList.length <= 0 && resourceList.length <= 0 && harvestList.length <= 0}}">
+	<scroll-view class="scroll-list" bindscrolltolower="practiceListLower"
+		scroll-y style="width: 100%; height: 1800rpx;"
+		refresher-enabled="{{true}}"
+		refresher-threshold="{{80}}"
+		refresher-default-style="none"
+		refresher-background="lightgreen"
+		scroll-top='{{topNum}}'>
+		<navigator class="margin-top" wx:for="{{practiceList}}" hover-class="none" url="/pages/practice/practice_info/practice_info?postId={{item.postId}}&userName={{item.userName}}">
+			<view class="cu-card article no-card shadow-warp">
+				<view class="flex solid-bottom padding align-start" style="background-color: #fff;">
+					<view class="flex">
+						<view class="margin-xs">
+							<view class="title">
+								<block wx:if="{{item.type == 2}}">
+									<view class="text-cut">【个人】{{item.userName}}</view>
+								</block>
+								<block wx:elif="{{item.type == 1}}">
+									<view class="text-cut">【高校】{{item.userName}}</view>
+								</block>
+							</view>
+							<view class="content">
+								<view class="desc">
+									<view class="text-content">{{item.schoolName}} | {{item.learningStages}} | {{item.workMonths}}个月</view>
+									<view class="text-content">期望实习：{{item.jobTitle}}</view>
+									<view class="text-content">期望地点：{{item.cityName}}</view>
+								</view>
+							</view>
+						</view>
+						<view class="radius margin-left">
+							<view class="cu-avatar xl round margin-left" style="background-image:url({{item.userIcon}})"></view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</navigator>
+	</scroll-view>
+</block>
+
+<!-- 享资源 -->
+<block wx:elif="{{resourceList.length > 0 && companyList.length <= 0 && practiceList.length <= 0 && harvestList.length <= 0}}">
+	<scroll-view class="scroll-list" bindscrolltolower="resourceListLower"
+		scroll-y style="width: 100%; height: 1800rpx;"
+		refresher-enabled="{{true}}"
+		refresher-threshold="{{80}}"
+		refresher-default-style="none"
+		refresher-background="lightgreen"
+		scroll-top='{{topNum}}'>
+		<navigator wx:for="{{resourceList}}" hover-class="none" url="/pages/resource/resource_info/resource_info?postId={{item.postId}}">
+			<view class="bg-white margin-top-sm shadow-warp">
+				<view class="margin-lr  padding-top-xs">
+					<view wx:if="{{item.type==1}}" class="text-xl padding-bottom-xs flex justify-between">
+						<view class="text-green text-bold text-shadow">{{item.title}}</view>
+						<view><view class="cu-tag bg-green text-df">高校</view></view>
+					</view>
+					<view wx:else class="text-xl padding-bottom-xs flex justify-between">
+						<view class="text-blue text-bold text-shadow">{{item.title}}</view>
+						<view><view class="cu-tag bg-blue text-df">企业</view></view>
+					</view>
+					<view class="padding-bottom-xs">{{item.guest}}</view>
+					<view class="flex padding-bottom-xs">
+						<view >时间：</view>
+						<view >{{item.startTime}}-{{item.endTime}}</view>
+					</view>
+					<view class="flex padding-bottom-xs">
+						<view > 地址：</view>
+						<view >{{item.address}}</view>
+					</view>
+				</view>
+				<view class="flex margin-lr text-lg text-{{item.type==1?'green':'blue'}} padding-bottom-xs">
+					<view class="flex-sub">{{item.organizeName}}</view>
+					<view class="flex-sub">{{item.cityName}}</view>
+				</view>
+			</view>
+		</navigator>
+	</scroll-view>
+</block>
+
+<!-- 晒收获 -->
+<block wx:elif="{{harvestList.length > 0 && companyList.length <= 0 && practiceList.length <= 0 && resourceList.length <= 0}}">
+	<scroll-view class="scroll-list" bindscrolltolower="harvestListLower"
+		scroll-y style="width: 100%; height: 1800rpx;"
+		refresher-enabled="{{true}}"
+		refresher-threshold="{{80}}"
+		refresher-default-style="none"
+		refresher-background="lightgreen"
+		scroll-top='{{topNum}}'>
+		<navigator wx:for="{{harvestList}}" hover-class="none" url="/pages/harvest/harvest_info/harvest_info?postId={{item.postId}}">
+		    <view class="padding bg-white margin-top-sm shadow-warp">
+		    <view class="flex justify-between">
+		            <view class=" text-xl">{{item.title}}</view>
+		            <view class="image">
+		                <image src="{{item.coverUrl}}" mode="aspectFill"></image>
+		            </view>
+		    </view>
+		        <view class="flex text-lg text-content">
+		            <view class="margin-right">{{item.userName}}</view>
+		            <view class="margin-right">{{item.organizeName}}</view>
+		            <view >{{item.gmtCreate}}</view>
+		    </view>
+		    </view>
+		</navigator>
+	</scroll-view>
+</block>
+
+  

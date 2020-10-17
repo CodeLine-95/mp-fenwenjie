@@ -1,0 +1,105 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">发布资源信息</view>
+</cu-custom>
+    <view class="cu-form-group margin-top">
+        <view class="title">主办单位</view>
+        <picker bindchange="companyChange" value="{{companyIndex}}" range="{{companyPicker}}" range-key="{{'name'}}">
+            <view class="picker">
+                {{companyIndex!=null?companyPicker[companyIndex].name:'禁止换行，超出容器部分会以 ... 方式截断'}}
+            </view>
+        </picker>
+        <!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <view class="picker">
+            {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}
+            </view>
+        </picker> -->
+    </view>
+    <view class="cu-form-group">
+        <view class="title">活动名称</view>
+        <input type="text" placeholder="活动名称" model:value="{{title}}"></input>
+    </view>
+    
+    <view class="cu-form-group margin-top">
+        <view class="title">方式：
+        <view class="cu-tag bg-{{color}}">{{method}}</view>
+        </view>
+        <switch bindchange="methodChange"></switch>
+	</view>
+    <view wx:if="{{method=='线下'}}" class="cu-form-group">
+        <view class="title">地点</view>
+        <text bindtap="selectCity" class="text-{{city.cityCode==null?'blue':'red'}} margin-right write padding-right-xs text-right flex-sub padding-tb">{{city.cityName}}</text>
+
+        <!-- <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <view class="picker">
+                {{region[0]}}，{{region[1]}}，{{region[2]}}
+            </view>
+        </picker> -->
+    </view>
+    <view wx:if="{{method=='线下'}}" class="cu-form-group">
+        <view class="title">详细地址</view>
+        <input model:value="{{address}}" placeholder="详细地址"></input>
+        <text class="cuIcon-locationfill text-orange"></text>
+    </view>
+
+  	<!-- <view class="cu-form-group">
+		<view class="title">专家简介</view>
+		<input type="text" placeholder="专家简介" value="{{peopleNum}}"></input>
+	</view> -->
+
+    <cu-expert id="expert">
+    </cu-expert>
+
+  	<view class="cu-form-group">
+		<view class="title">报告介绍</view>
+		<text bindtap="write" class="text-{{article==null?'green':'red'}} margin-right write padding-right-xs text-right flex-sub padding-tb">{{article==null?"填写":"修改"}}</text>
+	</view>  
+    <view wx:if="{{method=='线上'}}" class="cu-form-group">
+        <view class="title">网络链接</view>
+        <input model:value="{{address}}" placeholder="网络链接"></input>
+    </view>
+    <view class="cu-form-group">
+		<view class="title">开始日期</view>
+		<picker mode="date" model:value="{{startDate}}"  bindchange="startDateChange">
+			<view class="picker">
+				{{startDate}}
+			</view>
+		</picker>
+	</view>
+    <view class="cu-form-group">
+		<view class="title">开始时间</view>
+		<picker mode="time" model:value="{{startTime}}"  bindchange="startTimeChange">
+			<view class="picker">
+				{{startTime}}
+			</view>
+		</picker>
+	</view>
+    <view class="cu-form-group">
+		<view class="title">结束日期</view>
+		<picker mode="date" model:value="{{endDate}}"  bindchange="endDateChange">
+			<view class="picker">
+				{{endDate}}
+			</view>
+		</picker>
+	</view>
+    <view class="cu-form-group">
+		<view class="title">结束时间</view>
+		<picker mode="time" model:value="{{endTime}}" bindchange="endTimeChange">
+			<view class="picker">
+				{{endTime}}
+			</view>
+		</picker>
+	</view>
+  	<view class="cu-form-group">
+		<view class="title">人数</view>
+		<input type="number" placeholder="人数" model:value="{{count}}"></input>
+		<view class="title">人</view>
+	</view>
+
+    <cu-charge id="component">
+        
+    </cu-charge>
+    
+    <view class="padding flex flex-direction">
+        <button class="cu-btn bg-red margin-tb-sm lg" bindtap="onSubmit">提交</button>
+    </view>

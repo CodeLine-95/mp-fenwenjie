@@ -1,0 +1,35 @@
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">公司主页</view>
+  </cu-custom>
+  <view class="cu-list bg-white maring-top">
+    <view class="cu-item padding-sm flex justify-between arrow">
+        <view class="cu-avatar radius xl" style="background-image:url({{company.companyLogoUrl }});"></view>
+        <view class="text-xl flex flex-sub align-center padding-left">
+        {{company.companyName }}
+        </view>
+        <!-- <view class="text-xl flex align-center">
+            <text class="cuIcon-right lg text-gray"></text>
+        </view> -->
+    </view>
+  </view>
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text class="text-xl text-bold">公司简介</text>
+    </view>
+  </view>
+  <view class="bg-white padding-left padding-right padding-bottom text-lg">
+      <view >{{company.companyIntro }}
+      </view>
+  </view>
+    <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text class="text-xl text-bold">公司地址</text>
+    </view>
+  </view>
+  <view class="bg-white flex padding-right padding-bottom text-lg">
+      <view class="padding-left">{{company.companyAddress }}</view>
+      <!-- <view class="padding-left">海淀区八里庄街道办事处</view> -->
+  </view>

@@ -1,0 +1,91 @@
+/* pages/my/check/check.wxss */
+.titleOne{
+  display: flex;
+  justify-content: center;
+  padding: 20rpx;
+}
+.titleOne view{
+  border: 1px solid lightgray;
+  padding: 25rpx 120rpx;
+}
+.titleTwo{
+  background-color:rgb(215,215,215);
+  display: flex;
+  justify-content: space-around;
+  padding: 15rpx;
+}
+.titleTwo view{
+  background-color: rgb(242,242,242);
+  padding: 30rpx;
+  border-radius: 10rpx;
+}
+.listContainer{
+  display: flex;
+  padding: 30rpx;
+  position: relative;
+}
+.image{
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 250px;
+}
+.infoTitle{
+  display: flex;
+  
+}
+.infoTitle view:first-child{
+  font-size: 35rpx;
+}
+.infoTitle view:nth-child(2){
+
+  font-size: 20rpx;
+  height: 40rpx;
+  background-color: gray;
+  line-height: 40rpx;
+  padding: 0 20rpx;
+  border-radius: 20rpx;
+  margin-left: 10rpx;
+}
+.infoTitle view:nth-child(3){
+  font-size: 28rpx;
+  position: absolute;
+  left: 480rpx;
+  top: 20rpx;
+}
+.infoBottom{
+  margin-top: 50rpx;
+  display: flex;
+}
+.blue{
+  color: blue;
+}
+.black{
+  color: black;
+}
+.filterGray{
+  filter: grayscale(75%);
+}
+
+.userStatus{
+  position: absolute;
+  left: 675rpx;
+  top: 70rpx;
+}
+.userStatus image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.infoMid{
+  position: relative;
+  top: 25rpx;
+}
+
+.sort{
+	color: #fff;
+}

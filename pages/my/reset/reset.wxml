@@ -1,0 +1,37 @@
+<!--pages/my/reset/reset.wxml-->
+<!-- 头部 -->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">修改密码</view>
+</cu-custom>
+<form bindsubmit="bindsubmit">
+	<input type="text" style="display: none;" name="id" value="{{userInfo.id}}"></input>
+	<view class="flex-sub">
+		<view class="solid-bottom text-lg padding">
+			<text class="text-grey">修改密码</text>
+		</view>
+		<view class="cu-list menu sm-border card-menu">
+			<view class="cu-item" >
+				<view class="cu-form-group" style="width: 100%;padding: 0;">
+					<input type="password" placeholder="设置密码 (6-20位数字和字母的组合)" name="password"></input>
+				</view>
+			</view>
+		</view>
+		<view class="solid-bottom text-lg padding">
+			<text class="text-grey">确认密码</text>
+		</view>
+		<view class="cu-list menu sm-border card-menu">
+			<view class="cu-item" >
+				<view class="cu-form-group" style="width: 100%;padding: 0;">
+					<input type="password" placeholder="再次确认密码" name="valid_password"></input>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="padding"></view>
+	<view class="padding flex flex-direction">
+		<button class="cu-btn bg-grey lg" form-type="submit">确认修改</button>
+	</view>
+</form>
+
+

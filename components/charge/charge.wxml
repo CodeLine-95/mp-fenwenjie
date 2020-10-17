@@ -1,0 +1,38 @@
+<!-- <view >
+    <slot></slot>
+</view> -->
+<view class="cu-bar bg-white margin-top">
+  <view class="action">
+    <text>负责人</text>
+    <!-- <text class="cuIcon-friendadd text-green"></text> -->
+  </view>
+</view>
+
+<view class="cu-form-group">
+    <text >姓名</text>
+    <text >电话</text>
+    <text >邮箱</text>
+    <text >操作</text>
+</view>
+<view class="cu-form-group" wx:for="{{list}}">
+    <input data-index="{{index}}" bindinput="onName" placeholder="姓名" value="{{item.name}}"></input>
+    <input data-index="{{index}}" bindinput="onTel" placeholder="电话" value="{{item.tel}}"></input>
+    <input data-index="{{index}}" bindinput="onMail" placeholder="邮箱" value="{{item.mail}}"></input>
+
+    <button data-index="{{index}}" wx:if="{{index==list.length-1}}" bindtap="onAdd" class="cu-btn icon bg-gradual-green">
+        <text class="font text-white cuIcon-add"></text>
+    </button>
+    <button data-index="{{index}}" wx:else bindtap="onReduce" class="cu-btn icon bg-gradual-red">
+        <text class="font text-white cuIcon-move"></text>
+    </button>
+</view>
+<slot ></slot>
+<!-- <view class="cu-form-group">
+    <input placeholder="姓名" class="border"></input>
+    <input placeholder="电话"></input>
+    <input placeholder="邮箱"></input>
+
+    <button bindtap="onAdd" class="cu-btn icon bg-gradual-red">
+        <text class="font text-white cuIcon-move"></text>
+    </button>
+</view> -->

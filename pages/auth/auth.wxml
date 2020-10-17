@@ -1,0 +1,96 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+    <view slot="content">认证</view>
+</cu-custom>
+<form bindsubmit="bindsubmit">
+	<view class="padding">
+		<view class="cu-avatar xl round margin" style="background-image:url({{userInfo.avatarUrl}});"></view>
+		<text>用户名：{{userInfo.nickName}}</text>
+		<input type="text" style="display: none;" name="userName" value="{{userInfo.nickName}}"></input>
+		<input type="text" style="display: none;" name="wxName" value="{{userInfo.nickName}}"></input>
+		<input type="text" style="display: none;" name="wxIcon" value="{{userInfo.avatarUrl}}"></input>
+	</view>
+	<view class="cu-form-group">
+		<radio-group bindchange="RadioChange" style="width: 30%;margin: auto 10%;" wx:for="{{radioTiems}}">
+			<view class="cu-form-group">
+				<view class="title">{{item.name}}</view>
+				<radio class="radio" name="userIdentity" value="{{item.value}}" checked="{{item.checked}}"></radio>
+			</view>
+		</radio-group>
+	</view>
+	<view class="cu-form-group margin-top">
+		<view class="title">真实姓名:</view>
+		<input name="realName"></input>
+	</view>
+	<view class="cu-form-group margin-top">
+		<view class="title">学校/签署学校:</view>
+		<picker bindchange="SchoolChange" value="{{schoolIndex}}" range="{{schoolList}}">
+			<view class="picker">
+				{{schoolList.length>0?schoolList[schoolIndex]:'请选择'}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group margin-top">
+		<view class="title">专业:</view>
+		<picker bindchange="CollegeChange" value="{{collegeIndex}}" range="{{collegeList}}">
+			<view class="picker">
+				{{collegeList.length>0?collegeList[collegeIndex]:'请选择'}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group margin-top">
+		<view class="title">认证老师:</view>
+		<picker bindchange="TeacherChange" value="{{teacherIndex}}" range="{{teacherList}}">
+			<view class="picker">
+				{{teacherList.length>0?teacherList[teacherIndex]:'请选择'}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-bar bg-white margin-top">
+		<view class="action">
+			证件照:
+		</view>
+		<view class="action">
+			{{imgList.length}}/2
+		</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" data-url="{{imgList[index]}}">
+			 <image src="{{imgList[index]}}" mode="aspectFill"></image>
+				<view class="cu-tag bg-red" bindtap="DelImg" data-index="{{index}}">
+					<text class='cuIcon-close'></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length < 2}}">
+				<text class='cuIcon-cameraadd'></text>
+			</view>
+		</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">设置密码:</view>
+		<input placeholder="" name="password"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">确认密码:</view>
+		<input placeholder="" name="valid_password"></input>
+	</view>
+	<block wx:if="{{isShow}}">
+		<view class="cu-form-group">
+			<view class="title">公司名称:</view>
+			<input placeholder="" name="companyName"></input>
+		</view>
+	</block>
+	<view class="cu-form-group">
+		<view class="title">手机号:</view>
+		<input placeholder="" name="phoneNumber"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">邮箱:</view>
+		<input placeholder="" name="email"></input>
+	</view>
+	
+	<view class="cu-form-group margin-top" style="background-color: rgba(0,0,0,0);margin-bottom: 100rpx;">
+		<button class="cu-btn block lg bg-green" form-type="submit">提交</button>
+	</view>
+</form>

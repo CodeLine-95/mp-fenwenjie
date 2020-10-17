@@ -1,0 +1,25 @@
+
+<view class="cu-bar bg-white margin-top">
+  <view class="action">
+    <text>专家介绍</text>
+  </view>
+</view>
+
+<view class="cu-form-group">
+    <text >姓名</text>
+    <text >简介</text>
+    <text >操作</text>
+</view>
+<view class="cu-form-group" wx:for="{{list}}">
+    <input data-index="{{index}}" bindinput="onName" placeholder="姓名" value="{{item.guestName}}"></input>
+    <input data-index="{{index}}" bindinput="onInfo" placeholder="简介" value="{{item.guestIntro}}"></input>
+
+    <button data-index="{{index}}" wx:if="{{index==list.length-1}}" bindtap="onAdd" class="cu-btn icon bg-gradual-green">
+        <text class="font text-white cuIcon-add"></text>
+    </button>
+    <button data-index="{{index}}" wx:else bindtap="onReduce" class="cu-btn icon bg-gradual-red">
+        <text class="font text-white cuIcon-move"></text>
+    </button>
+</view>
+<slot ></slot>
+

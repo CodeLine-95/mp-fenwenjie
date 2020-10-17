@@ -1,0 +1,128 @@
+<!--pages/talent/talent.wxml-->
+<!-- 头部 -->
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">轮播图</view>
+  </cu-custom>
+<!-- 轮播图 -->
+  <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#aaa" indicator-active-color="#fff">
+    <swiper-item wx:for="{{swiperList}}" wx:key>
+      <image src="{{item.imageUrl}}" mode="aspectFill"></image>
+      <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
+    </swiper-item>
+  </swiper>
+<!-- 企业滚动 -->
+  <view class="container my-margin-top">
+    <view class="page-body">
+      <view class="page-section">
+        <view class="company">
+          <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+            <view id="demo1" class="scroll-view-item_H demo-text-1">
+              <view wx:for="{{display_company_list}}" data-id="{{item.id}}"  bindtap="company" class="cu-avatar xl round margin-left"
+               style="background-image:url({{item.imageUrl}});"></view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </view>
+<!-- 搜索框 -->
+  <view class="cu-bar search bg-white my-margin-top">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索实习职位" confirm-type="search" model:value="{{searchInfo}}"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow-blur round" bindtap="search">搜索</button>
+    </view>
+  </view>
+<!-- 实习列表 -->
+  <scroll-view class="scroll-list" bindscrolltolower="lower2"
+  scroll-y style="width: 100%; height: 800px;"
+  refresher-enabled="{{true}}"
+  refresher-threshold="{{80}}"
+  refresher-default-style="none"
+  refresher-background="lightgreen">
+      <view wx:for="{{practiceList}}" class="practice">
+        <navigator hover-class="none" url="/pages/talent/position_info/position_info?postId ={{item.postId}}">
+          <view class="top">
+            <view class="left">
+              <view class="title">
+                {{item.jobTitle}}
+              </view>
+              <view class="address">
+                <view>{{item.cityName }}</view>
+                <view>{{item.workMonths }}个月</view>
+                <view>{{item.workDays }}天/每周</view>
+              </view>
+            </view>
+            <view class="right">
+              <view class="salary">{{item.salary }}</view>
+              <view class="time">{{item.gmtCreate }}</view>
+            </view>
+          </view>
+        <view class="bottom">
+          <view class="image">
+          <image src="{{item.companyLogoUrl }}" mode="aspectFill"></image>
+          </view>
+          <view class="message">
+              <view>{{item.companyName}}</view>
+              <!-- <view>{{item.team}}</view> -->
+              <view>现招{{item.jobsCount }}人</view>
+          </view>
+        </view>
+        </navigator>
+      </view>
+  </scroll-view>
+
+
+    <view wx:if="{{(userType==0||userType==1)}}" class="release-list">
+      <navigator hover-class="none" url="/pages/talent/post_practice/post_practice?id=1&pw=2">
+        <view wx:if="{{releaseShow}}" class="bg-gradual-pink padding radius text-center shadow-blur release-list-item">
+         <view class="release-text">发布实践</view>
+         </view>
+      </navigator>
+
+      <navigator hover-class="none" url="/pages/talent/post_gain/post_gain?id=1&pw=2">
+        <view wx:if="{{releaseShow}}"  class="bg-gradual-pink padding radius text-center shadow-blur release-list-item">
+          <view class="release-text">发布收获</view>
+        </view>
+      </navigator>
+
+      <navigator hover-class="none" url="/pages/talent/post_resource/post_resource?id=1&pw=2">
+        <view wx:if="{{releaseShow}}"  class="bg-gradual-pink padding radius text-center shadow-blur release-list-item">
+          <view class="release-text">发布资源</view>
+        </view>
+      </navigator>
+
+      <view bindtap="release" class="bg-gradual-pink padding radius text-center shadow-blur release-list-item release">
+        <image src="/images/iconfont/pen.png"></image>
+        <view class="release-text">发布</view>
+      </view>
+    </view>
+    
+    <view wx:if="{{(userType==2)}}" class="release-list">
+      <navigator hover-class="none" url="/pages/talent/post_internship/post_internship?id=1&pw=2">
+        <view wx:if="{{releaseShow}}" class="bg-gradual-pink padding radius text-center shadow-blur release-list-item">
+         <view class="release-text">发布实习</view>
+         </view>
+      </navigator>
+
+    <navigator hover-class="none" url="/pages/talent/post_gain/post_gain?id=1&pw=2">
+      <view wx:if="{{releaseShow}}"  class="bg-gradual-pink padding radius text-center shadow-blur release-list-item">
+        <view class="release-text">发布收获</view>
+      </view>
+    </navigator>
+
+    <navigator hover-class="none" url="/pages/talent/post_resource/post_resource?id=1&pw=2">
+      <view wx:if="{{releaseShow}}"  class="bg-gradual-pink padding radius text-center shadow-blur release-list-item">
+        <view class="release-text">发布资源</view>
+      </view>
+    </navigator>
+      <view bindtap="release" class="bg-gradual-pink padding radius text-center shadow-blur release-list-item release">
+        <image src="/images/iconfont/pen.png"></image>
+        <view class="release-text">发布</view>
+      </view>
+    </view>
+
+<cu-fill></cu-fill>
