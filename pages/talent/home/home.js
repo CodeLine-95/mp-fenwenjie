@@ -29,9 +29,9 @@ Component({
     search(){
 
       // 
-      var data = "{'lastItemDate':1,'pageSize':10,'searchInfo':"+this.data.searchInfo+"}"
+      var data = "{'lastItemDate':null,'pageSize':10,'searchInfo':"+this.data.searchInfo+"}"
       console.log(this.data.searchInfo);
-      $.get("/api/post/search_list",data).then(res=>{
+      $.get("/api/post/search_list",{lastItemDate:null,pageSize:10,searchInfo:this.data.searchInfo}).then(res=>{
         
         console.log("res",res);
 
@@ -71,7 +71,7 @@ Component({
 
       // 3.加载实习列表
       // var data = "{'lastItemDate':,'pageSize':10}"
-      $.post("/api/post/company_list",{lastItemDate:this.data.practiceList[this.data.practiceList.length-1]}).then(res=>{
+      $.post("/api/post/company_list",{lastItemDate:null,pageSize:10}).then(res=>{
         
         console.log("res",res);
 
@@ -148,8 +148,8 @@ Component({
         console.log("1.加载轮播图",res);
         if(res.data.code==200){
           console.log("data",res.data.data);
-          this.setData({swiperList:res.data.data})
-          console.log("swiperList",res.data.data)
+          this.setData({swiperList:res.data.data.list})
+          console.log("swiperList",res.data.data.list)
         }else{
           console.log("数据加载失败....");
         }
@@ -170,8 +170,7 @@ Component({
         console.log("error",res);
       });
       // 3.加载实习列表
-      var data = "{'lastItemDate':1,'pageSize':10}"
-      $.post("/api/post/company_list",data).then(res=>{
+      $.post("/api/post/company_list",{lastItemDate:null,pageSize:10}).then(res=>{
         
         console.log("res",res);
 

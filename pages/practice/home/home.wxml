@@ -19,33 +19,38 @@ refresher-threshold="{{80}}"
 refresher-default-style="none"
 refresher-background="lightgreen"
 scroll-top='{{topNum}}'>
-    <navigator class="margin-top" wx:for="{{practiceList}}" hover-class="none" url="/pages/practice/practice_info/practice_info?postId={{item.postId}}&userName={{item.userName}}">
-		<view class="cu-card article no-card shadow-warp">
-			<view class="flex solid-bottom padding align-start" style="background-color: #fff;">
-				<view class="flex">
-					<view class="margin-xs">
-						<view class="title">
-							<block wx:if="{{item.type == 1}}">
-								<view class="text-cut">【个人】{{item.userName}}</view>
-							</block>
-							<block wx:elif="{{item.type == 2}}">
-								<view class="text-cut">【高校】{{item.userName}}</view>
-							</block>
-						</view>
-						<view class="content">
-							<view class="desc">
-								<view class="text-content">{{item.schoolName}} | {{item.learningStages}} | {{item.workMonths}}个月</view>
-								<view class="text-content">期望实习：{{item.jobTitle}}</view>
-								<view class="text-content">期望地点：{{item.cityName}}</view>
+	<block wx:if="{{practiceList.length > 0}}">
+		<navigator class="margin-top" wx:for="{{practiceList}}" hover-class="none" url="/pages/practice/practice_info/practice_info?postId={{item.postId}}&userName={{item.userName}}">
+			<view class="cu-card article no-card shadow-warp">
+				<view class="flex solid-bottom padding align-start" style="background-color: #fff;">
+					<view class="flex">
+						<view class="margin-xs">
+							<view class="title">
+								<block wx:if="{{item.type == 1}}">
+									<view class="text-cut">【个人】{{item.userName}}</view>
+								</block>
+								<block wx:elif="{{item.type == 2}}">
+									<view class="text-cut">【高校】{{item.userName}}</view>
+								</block>
+							</view>
+							<view class="content">
+								<view class="desc">
+									<view class="text-content">{{item.schoolName}} | {{item.learningStages}} | {{item.workMonths}}个月</view>
+									<view class="text-content">期望实习：{{item.jobTitle}}</view>
+									<view class="text-content">期望地点：{{item.cityName}}</view>
+								</view>
 							</view>
 						</view>
-					</view>
-					<view class="radius margin-left">
-						<view class="cu-avatar xl round margin-left" style="background-image:url({{item.userIcon}})"></view>
+						<view class="radius margin-left">
+							<view class="cu-avatar xl round margin-left" style="background-image:url({{item.userIcon}})"></view>
+						</view>
 					</view>
 				</view>
 			</view>
-		</view>
-    </navigator>
+		</navigator>
+	</block>
+	<block wx:else>
+		<view class="margin padding text-center">暂无数据</view>
+	</block>
 </scroll-view>
 

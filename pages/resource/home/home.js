@@ -78,7 +78,7 @@ Component({
       this.query(queryData)
     },
     query(data){
-      $.get("/api/post/activity_list",data).then(res=>{   
+      $.post("/api/post/activity_list",data).then(res=>{   
         if(res.data.code==200){
           console.log("data",res.data.data);
           this.setData({resourceList:res.data.data})
@@ -88,6 +88,7 @@ Component({
           });
         }else{
           console.log("数据加载失败....");
+		  this.setData({resourceList:[]})
         }
       }).catch(res=>{
         console.log("error",res);
@@ -103,7 +104,7 @@ Component({
         type:this.data.type,
         userId:this.data.userId
       }
-      $.get("/api/post/activity_list",
+      $.post("/api/post/activity_list",
       queryData).then(res=>{   
         if(res.data.code==200){
           console.log("data",res.data.data);

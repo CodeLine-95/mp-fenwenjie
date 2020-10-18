@@ -1,8 +1,8 @@
 <!--pages/talent/talent.wxml-->
 <!-- 头部 -->
-  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
-    <view slot="backText">返回</view>
-    <view slot="content">轮播图</view>
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{false}}">
+<!--    <view slot="backText">返回</view> -->
+    <view slot="content">觅人才</view>
   </cu-custom>
 <!-- 轮播图 -->
   <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#aaa" indicator-active-color="#fff">

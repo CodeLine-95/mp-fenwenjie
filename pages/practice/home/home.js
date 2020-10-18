@@ -88,6 +88,7 @@ Component({
           });
         }else{
           console.log("数据加载失败....");
+		  this.setData({practiceList:[]})
         }
       }).catch(res=>{
         console.log("error",res);
